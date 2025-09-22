@@ -25,10 +25,10 @@ export async function GET(req: NextRequest) {
         ...(q
           ? {
               OR: [
-                { size: { label: { contains: q, mode: 'insensitive' } } },
-                { variant: { colorName: { contains: q, mode: 'insensitive' } } },
-                { variant: { product: { name: { contains: q, mode: 'insensitive' } } } },
-                { variant: { product: { brand: { contains: q, mode: 'insensitive' } } } },
+                { size: { label: { contains: q } } },
+                { variant: { colorName: { contains: q } } },
+                { variant: { product: { name: { contains: q } } } },
+                { variant: { product: { brand: { contains: q } } } },
               ],
             }
           : {}),

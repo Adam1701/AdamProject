@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
 
     const sizes = await prisma.size.findMany({
       where: {
-        ...(q ? { label: { contains: q, mode: 'insensitive' } } : {}),
+        ...(q ? { label: { contains: q } } : {}),
         ...(cat ? { category: cat } : {}),
       },
       take,

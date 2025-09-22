@@ -111,10 +111,12 @@ async function importProduct(apiProduct: any) {
         variants: {
           create: [{
             colorName: apiProduct.nickname || apiProduct.main_color || 'Default',
-            images: apiProduct.image ? [{
-              url: apiProduct.image,
-              sort: 0
-            }] : []
+            images: {
+              create: apiProduct.image ? [{
+                url: apiProduct.image,
+                sort: 0
+              }] : []
+            }
           }]
         }
       },

@@ -1,8 +1,7 @@
-import { NextRequest } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
-  const id = params.id
+export async function GET(req: Request, ctx: any) {
+  const id = ctx.params.id
   const { searchParams } = new URL(req.url)
   const shouldAutoPrint = searchParams.get('print') === '1'
   const order = await prisma.order.findUnique({

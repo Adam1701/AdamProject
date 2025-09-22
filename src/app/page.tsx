@@ -5,15 +5,12 @@ import ProductImage from "@/components/ui/ProductImage";
 
 type SearchParams = { [key: string]: string | string[] | undefined };
 
-export default async function Home(props: {
-  // Next 15: searchParams may be a Promise
-  searchParams?: Promise<SearchParams> | SearchParams;
-}) {
+export default async function Home(props: { searchParams?: Promise<any> }) {
   const pageSize = 24;
   const raw = props.searchParams;
   const sp: SearchParams | undefined = raw && typeof (raw as any).then === 'function'
     ? await (raw as Promise<SearchParams>)
-    : (raw as SearchParams | undefined);
+    : undefined;
   const pageParam = Array.isArray(sp?.page) ? sp?.page[0] : sp?.page;
   const page = Math.max(1, parseInt(pageParam || "1", 10) || 1);
 

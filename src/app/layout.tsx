@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import ClientProviders from "@/components/providers/ClientProviders";
-import { Metadata } from "next";
 import Image from "next/image";
 import CookieBanner from "@/components/gdpr/CookieBanner";
 import Logo from "@/components/ui/Logo";

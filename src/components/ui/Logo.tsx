@@ -2,14 +2,14 @@ import Image from "next/image"
 
 export default function Logo() {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-1">
       {/* Try to render custom logo from /public; fallback is hidden if missing */}
       <div className="flex items-center">
         <Image
-          src="/adamsneakers-logo.svg"
+          src="/Logo%20d%27Adam%27sneakers%20avec%20masque%20et%20sneaker.png"
           alt="Adam'sneakers logo"
-          width={160}
-          height={48}
+          width={110}
+          height={32}
           className="object-contain"
           priority
         />

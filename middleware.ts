@@ -1,3 +1,15 @@
+import { withAuth } from 'next-auth/middleware'
+
+export default withAuth({
+  pages: {
+    signIn: '/api/auth/signin',
+  },
+})
+
+export const config = {
+  matcher: ['/((?!_next|api/auth|favicon.ico|public|images|icons).*)'],
+}
+
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'

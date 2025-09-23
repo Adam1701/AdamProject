@@ -50,6 +50,9 @@ export default function RootLayout({
                   <Link href="/admin/orders" className="text-slate-700 hover:text-slate-900 font-medium transition-colors">
                     Commandes
                   </Link>
+                  <Link href="/api/auth/signin" className="px-3 py-1.5 rounded-lg bg-slate-900 text-white text-sm font-medium hover:bg-slate-800">
+                    Connexion
+                  </Link>
                 </div>
               </nav>
             </header>

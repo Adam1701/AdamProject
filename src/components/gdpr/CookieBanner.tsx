@@ -5,7 +5,8 @@ export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const v = typeof window !== 'undefined' ? localStorage.getItem('cookie-consent') : 'true';
+    if (typeof window === 'undefined') return;
+    const v = sessionStorage.getItem('cookie-consent');
     if (!v) setVisible(true);
   }, []);
 
@@ -20,11 +21,11 @@ export default function CookieBanner() {
         </p>
         <div className="flex gap-2">
           <button
-            onClick={() => { localStorage.setItem('cookie-consent', 'declined'); setVisible(false); }}
+            onClick={() => { sessionStorage.setItem('cookie-consent', 'declined'); setVisible(false); }}
             className="px-3 py-2 text-sm border border-slate-300 rounded-lg hover:bg-slate-50"
           >Refuser</button>
           <button
-            onClick={() => { localStorage.setItem('cookie-consent', 'accepted'); setVisible(false); }}
+            onClick={() => { sessionStorage.setItem('cookie-consent', 'accepted'); setVisible(false); }}
             className="px-3 py-2 text-sm rounded-lg bg-slate-900 text-white hover:bg-slate-800"
           >Accepter</button>
         </div>

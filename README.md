@@ -2,20 +2,20 @@
 
 Un site e-commerce complet pour la vente de sneakers avec gestion des stocks en temps réel, rôles utilisateurs et conformité RGPD.
 
-## 🚀 Fonctionnalités
+## Fonctionnalités
 
-### ✅ Gestion des stocks
+### Gestion des stocks
 - CRUD complet (Créer, Lire, Modifier, Supprimer)
 - Mises à jour en temps réel via Server-Sent Events
 - Interface admin/seller pour la gestion des quantités
 - Gestion réaliste des tailles par catégorie (hommes, femmes, enfants)
 
-### ✅ Gestion des rôles et droits
+### Gestion des rôles et droits
 - **Administrateur** : Accès complet (stocks, commandes, utilisateurs)
 - **Vendeur** : Gestion des stocks et commandes
 - **Client** : Navigation, panier, commandes
 
-### ✅ Processus d'achat complet
+### Processus d'achat complet
 - Catalogue produits avec filtres
 - Panier persistant (localStorage)
 - Checkout avec formulaire de livraison
@@ -23,19 +23,19 @@ Un site e-commerce complet pour la vente de sneakers avec gestion des stocks en 
 - Confirmation de commande avec email simulé
 - Suivi des commandes
 
-### ✅ Interface utilisateur
+### Interface utilisateur
 - Design responsive et moderne
 - Composants réutilisables (Button, Card, Logo)
 - Navigation intuitive
 - Animations et transitions fluides
 
-### ✅ Conformité RGPD
+### Conformité RGPD
 - Bandeau de consentement cookies
 - Politique de confidentialité complète
 - Conditions générales de vente
 - Gestion sécurisée des sessions
 
-## 🛠️ Technologies
+## Technologies
 
 - **Frontend** : Next.js 15, React 19, TypeScript
 - **Styling** : Tailwind CSS
@@ -44,7 +44,7 @@ Un site e-commerce complet pour la vente de sneakers avec gestion des stocks en 
 - **État global** : Context API + localStorage
 - **Temps réel** : Server-Sent Events (SSE)
 
-## 📦 Installation
+## Installation
 
 1. **Cloner le projet**
 ```bash
@@ -74,7 +74,7 @@ npm run seed
 npm run dev
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Variables d'environnement
 ```env
@@ -83,7 +83,7 @@ NEXTAUTH_SECRET="your-secret-key"
 NEXTAUTH_URL="http://localhost:3000"
 ```
 
-### 🔑 Connexion
+### Connexion
 
 Accéder à la page de connexion: `http://localhost:3000/api/auth/signin` (provider "Credentials").
 
@@ -94,7 +94,7 @@ Comptes de test:
 
 Se déconnecter: `http://localhost:3000/api/auth/signout`
 
-### 🌐 Liens rapides (dev)
+### Liens rapides (dev)
 - Accueil: `http://localhost:3000/`
 - Panier: `http://localhost:3000/cart`
 - Checkout: `http://localhost:3000/checkout`
@@ -103,7 +103,7 @@ Se déconnecter: `http://localhost:3000/api/auth/signout`
 - Admin commandes: `http://localhost:3000/admin/orders` (ADMIN/SELLER)
 - Admin stocks: `http://localhost:3000/admin/stocks` (ADMIN/SELLER)
 
-## 📊 Base de données
+## Base de données
 
 ### Modèles principaux
 - **User** : Utilisateurs avec rôles
@@ -114,7 +114,7 @@ Se déconnecter: `http://localhost:3000/api/auth/signout`
 - **Order** : Commandes avec statuts
 - **Cart** : Panier utilisateur
 
-## 🎯 API Endpoints
+## API Endpoints
 
 ### Produits
 - `GET /api/products` - Liste des produits
@@ -139,7 +139,7 @@ Se déconnecter: `http://localhost:3000/api/auth/signout`
 ### Checkout
 - `POST /api/checkout` - Créer commande
 
-## 🔒 Sécurité
+## Sécurité
 
 - Authentification JWT avec NextAuth
 - Validation des rôles sur les routes sensibles
@@ -147,14 +147,14 @@ Se déconnecter: `http://localhost:3000/api/auth/signout`
 - Sessions sécurisées
 - Validation des données côté serveur
 
-## 📱 Responsive Design
+## Responsive Design
 
 - Mobile-first approach
 - Breakpoints Tailwind optimisés
 - Navigation adaptative
 - Images responsives
 
-## 🚀 Déploiement
+## Déploiement
 
 ### Build de production
 ```bash
@@ -167,14 +167,14 @@ npm start
 - Générer un `NEXTAUTH_SECRET` sécurisé
 - Définir `NEXTAUTH_URL` avec votre domaine
 
-## 📈 Performance
+## Performance
 
 - Images optimisées avec Next.js Image
 - Lazy loading des composants
 - Mise en cache des requêtes
 - Compression gzip
 
-## 🧪 Tests
+## Tests
 
 ```bash
 # Tests unitaires
@@ -187,11 +187,11 @@ npm run test:integration
 npm run test:coverage
 ```
 
-## 📝 Documentation API
+## Documentation API
 
 La documentation complète de l'API est disponible dans `/docs/api.md`
 
-## 🤝 Contribution
+## Contribution
 
 1. Fork le projet
 2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
@@ -199,35 +199,18 @@ La documentation complète de l'API est disponible dans `/docs/api.md`
 4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
 
-## 📄 Licence
+## Licence
 
 Ce projet est sous licence MIT. Voir `LICENSE` pour plus de détails.
 
-## 📞 Support
+## Support
 
 Pour toute question ou problème :
-- Email : support@sneakershop.fr
-- Issues GitHub : [Créer une issue](https://github.com/your-repo/issues)
+- Email : adam.ba@epitech.digital
+- Issues GitHub : [Créer une issue](https://github.com/Adam1701/AdamProject)
 
 ---
 
-Développé avec ❤️ pour l'école
+Développé avec passion par Adam BA
 
-## 📸 Captures d’écran
 
-Ajoutez vos captures dans `docs/screenshots/` et elles s’afficheront ici.
-
-- Accueil
-  - ![Accueil](docs/screenshots/home.png)
-- Page produit
-  - ![Produit](docs/screenshots/product.png)
-- Panier
-  - ![Panier](docs/screenshots/cart.png)
-- Checkout (paiement simulé)
-  - ![Checkout](docs/screenshots/checkout.png)
-- Commandes (client)
-  - ![Mes commandes](docs/screenshots/orders.png)
-- Admin commandes
-  - ![Admin commandes](docs/screenshots/admin-orders.png)
-- Admin stocks
-  - ![Admin stocks](docs/screenshots/admin-stocks.png)

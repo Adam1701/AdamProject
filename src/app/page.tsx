@@ -13,11 +13,23 @@ export default async function Home(props: { searchParams?: Promise<any> }) {
     : undefined;
   const pageParam = Array.isArray(sp?.page) ? sp?.page[0] : sp?.page;
   const page = Math.max(1, parseInt(pageParam || "1", 10) || 1);
+  const q = (Array.isArray(sp?.q) ? sp?.q[0] : sp?.q)?.toString().trim() || "";
+  const category = (Array.isArray(sp?.category) ? sp?.category[0] : sp?.category)?.toString().trim() || "";
 
-  const where = {
+  const where: any = {
     price: { gt: 0 },
     variants: { some: { images: { some: { url: { not: { contains: 'images.unsplash.com' } } } } } },
-  } as const;
+    ...(q
+      ? {
+          OR: [
+            { name: { contains: q } },
+            { brand: { contains: q } },
+            { variants: { some: { colorName: { contains: q } } } },
+          ],
+        }
+      : {}),
+    ...(category ? { category } : {}),
+  };
 
   const total = await prisma.product.count({ where });
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
@@ -35,6 +47,33 @@ export default async function Home(props: { searchParams?: Promise<any> }) {
   
   return (
     <div className="space-y-12">
+      {/* Recherche & Filtres */}
+      <form className="flex flex-wrap items-center gap-3" action="/" method="get">
+        <input
+          type="text"
+          name="q"
+          placeholder="Rechercher une paire, une marque, une couleur..."
+          defaultValue={q}
+          className="border rounded px-3 py-2 flex-1 min-w-[220px]"
+        />
+        <select
+          name="category"
+          defaultValue={category}
+          className="border rounded px-3 py-2"
+        >
+          <option value="">Toutes catégories</option>
+          <option value="men">Hommes</option>
+          <option value="women">Femmes</option>
+          <option value="kids">Enfants</option>
+        </select>
+        {/* reset page when searching */}
+        <input type="hidden" name="page" value="1" />
+        <button className="px-4 py-2 rounded bg-slate-900 text-white">Filtrer</button>
+        {(q || category) && (
+          <Link href="/" className="px-3 py-2 text-slate-700 hover:underline">Réinitialiser</Link>
+        )}
+      </form>
+
       <div className="text-center py-16 bg-slate-50 rounded-2xl">
         <h1 className="text-5xl font-bold text-slate-900 mb-6">
           Bienvenue chez Adam'sneakers
@@ -96,7 +135,7 @@ export default async function Home(props: { searchParams?: Promise<any> }) {
       <div className="mt-10 flex items-center justify-center gap-2">
         {page > 1 && (
           <Link
-            href={`/?page=${page - 1}`}
+            href={`/?page=${page - 1}${q ? `&q=${encodeURIComponent(q)}` : ''}${category ? `&category=${encodeURIComponent(category)}` : ''}`}
             className="px-3 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50"
           >
             Précédent
@@ -108,7 +147,7 @@ export default async function Home(props: { searchParams?: Promise<any> }) {
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
             <Link
               key={p}
-              href={`/?page=${p}`}
+              href={`/?page=${p}${q ? `&q=${encodeURIComponent(q)}` : ''}${category ? `&category=${encodeURIComponent(category)}` : ''}`}
               className={`px-3 py-2 rounded-lg border text-sm ${
                 p === page
                   ? 'bg-slate-900 text-white border-slate-900'
@@ -122,7 +161,7 @@ export default async function Home(props: { searchParams?: Promise<any> }) {
 
         {page < totalPages && (
           <Link
-            href={`/?page=${page + 1}`}
+            href={`/?page=${page + 1}${q ? `&q=${encodeURIComponent(q)}` : ''}${category ? `&category=${encodeURIComponent(category)}` : ''}`}
             className="px-3 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50"
           >
             Suivant

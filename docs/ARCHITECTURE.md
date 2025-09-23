@@ -1,10 +1,10 @@
 # Architecture Technique - SneakerShop
 
-## 🏗️ Vue d'ensemble
+## Vue d'ensemble
 
 SneakerShop est une application e-commerce fullstack construite avec Next.js 15, utilisant l'App Router et TypeScript pour une architecture moderne et scalable.
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 src/
@@ -34,7 +34,7 @@ src/
     └── seed.ts            # Données de test
 ```
 
-## 🗄️ Base de données
+## Base de données
 
 ### Modèle relationnel
 
@@ -46,7 +46,7 @@ src/
 - **Order** : Commandes avec statuts
 - **Cart** : Panier utilisateur
 
-## 🔄 Flux de données
+## Flux de données
 
 ### 1. Authentification
 ```
@@ -63,7 +63,7 @@ Admin modifie stock → API PATCH → Event Bus → SSE → Client update
 Client → Cart → Checkout → API → Transaction DB → Order created
 ```
 
-## 🎯 Patterns architecturaux
+## Patterns architecturaux
 
 ### 1. Server Components + Client Components
 - **Server Components** : Pages, API routes, données initiales
@@ -84,7 +84,7 @@ emitStockUpdate(stockId, quantity)
 EventSource('/api/stocks/sse')
 ```
 
-## 🔒 Sécurité
+## Sécurité
 
 ### 1. Authentification
 - NextAuth.js avec JWT
@@ -100,7 +100,7 @@ if (role !== 'ADMIN' && role !== 'SELLER') {
 }
 ```
 
-## 📊 Performance
+## Performance
 
 ### 1. Optimisations Next.js
 - Image optimization avec `next/image`

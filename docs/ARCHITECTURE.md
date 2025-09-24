@@ -1,37 +1,32 @@
-# Architecture Technique - SneakerShop
+# Architecture technique
 
-## Vue d'ensemble
+## Vue d’ensemble
 
-SneakerShop est une application e-commerce fullstack construite avec Next.js 15, utilisant l'App Router et TypeScript pour une architecture moderne et scalable.
+Application e‑commerce construite avec Next.js 15 (App Router) et TypeScript. Objectif: code clair, modules isolés, et performances correctes par défaut.
 
 ## Structure du projet
 
 ```
 src/
 ├── app/                    # App Router (Next.js 15)
-│   ├── api/               # API Routes
-│   │   ├── auth/          # NextAuth endpoints
-│   │   ├── products/      # Gestion produits
-│   │   ├── stocks/        # Gestion stocks + SSE
-│   │   ├── orders/        # Gestion commandes
-│   │   └── checkout/      # Processus de commande
+│   ├── api/               # Routes API
 │   ├── admin/             # Pages admin
-│   ├── cart/              # Panier client
+│   ├── cart/              # Panier
 │   ├── checkout/          # Checkout
 │   ├── product/           # Pages produits
 │   ├── privacy/           # RGPD
 │   └── terms/             # CGV
-├── components/            # Composants réutilisables
-│   ├── cart/              # Logique panier
-│   ├── gdpr/              # Conformité RGPD
+├── components/            # UI et logique client
+│   ├── cart/              # Panier
+│   ├── gdpr/              # Bandeau cookies
 │   └── ui/                # Composants UI
-├── lib/                   # Utilitaires
+├── lib/                   # Utilitaires serveur
 │   ├── prisma.ts          # Client Prisma
-│   ├── auth.ts            # Config NextAuth
-│   └── bus.ts             # Event bus SSE
-└── prisma/                # Schéma base de données
-    ├── schema.prisma      # Modèles Prisma
-    └── seed.ts            # Données de test
+│   ├── auth.ts            # NextAuth
+│   └── bus.ts             # Event bus (SSE)
+└── prisma/                # Schéma et seeds
+    ├── schema.prisma
+    └── seed.ts
 ```
 
 ## Base de données
@@ -63,19 +58,19 @@ Admin modifie stock → API PATCH → Event Bus → SSE → Client update
 Client → Cart → Checkout → API → Transaction DB → Order created
 ```
 
-## Patterns architecturaux
+## Patterns
 
-### 1. Server Components + Client Components
-- **Server Components** : Pages, API routes, données initiales
-- **Client Components** : Interactivité, état local, hooks
+### 1. Server vs Client Components
+- Server: pages, API, accès DB
+- Client: interactivité, état local
 
-### 2. Context API pour l'état global
+### 2. Context API pour l’état global
 ```typescript
 // CartProvider pour l'état panier
 const { items, addItem, removeItem } = useCart()
 ```
 
-### 3. Event Bus pour le temps réel
+### 3. Event bus pour le temps réel
 ```typescript
 // Émission d'événements
 emitStockUpdate(stockId, quantity)
@@ -87,7 +82,7 @@ EventSource('/api/stocks/sse')
 ## Sécurité
 
 ### 1. Authentification
-- NextAuth.js avec JWT
+- NextAuth.js (JWT)
 - Sessions sécurisées
 - Protection CSRF intégrée
 
@@ -102,12 +97,12 @@ if (role !== 'ADMIN' && role !== 'SELLER') {
 
 ## Performance
 
-### 1. Optimisations Next.js
-- Image optimization avec `next/image`
-- Lazy loading des composants
-- Code splitting automatique
+### 1. Côté Next.js
+- `next/image` pour les images
+- Lazy loading
+- Code splitting
 
 ### 2. Base de données
-- Index sur les clés étrangères
-- Requêtes optimisées avec Prisma
-- Pagination pour les listes
+- Index sur clés étrangères
+- Requêtes Prisma ciblées
+- Pagination systématique

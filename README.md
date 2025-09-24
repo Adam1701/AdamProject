@@ -1,82 +1,81 @@
-# SneakerShop - E-commerce Fullstack
+# SneakerShop
 
-Un site e-commerce complet pour la vente de sneakers avec gestion des stocks en temps réel, rôles utilisateurs et conformité RGPD.
+Application e‑commerce pour la vente de sneakers, avec gestion des stocks en temps réel, rôles utilisateurs et conformité RGPD.
 
 ## Fonctionnalités
 
 ### Gestion des stocks
-- CRUD complet (Créer, Lire, Modifier, Supprimer)
-- Mises à jour en temps réel via Server-Sent Events
-- Interface admin/seller pour la gestion des quantités
-- Gestion réaliste des tailles par catégorie (hommes, femmes, enfants)
+- CRUD complet (créer, lire, modifier, supprimer)
+- Mises à jour en temps réel via Server‑Sent Events (SSE)
+- Interface administrateur/vendeur pour gérer les quantités
+- Tailles par catégories (hommes, femmes, enfants)
 
-### Gestion des rôles et droits
-- **Administrateur** : Accès complet (stocks, commandes, utilisateurs)
-- **Vendeur** : Gestion des stocks et commandes
-- **Client** : Navigation, panier, commandes
+### Rôles et droits
+- Administrateur : accès complet (stocks, commandes, utilisateurs)
+- Vendeur : gestion des stocks et commandes
+- Client : navigation, panier, commandes
 
-### Processus d'achat complet
-- Catalogue produits avec filtres
-- Panier persistant (localStorage)
-- Checkout avec formulaire de livraison
-- Paiement fictif simulé
-- Confirmation de commande avec email simulé
+### Parcours d’achat
+- Catalogue avec recherche et filtres
+- Panier persistant
+- Checkout avec adresse de livraison
+- Paiement fictif
+- Confirmation de commande (email simulé)
 - Suivi des commandes
 
 ### Interface utilisateur
-- Design responsive et moderne
+- Design responsive
 - Composants réutilisables (Button, Card, Logo)
-- Navigation intuitive
-- Animations et transitions fluides
+- Navigation claire
 
-### Conformité RGPD
-- Bandeau de consentement cookies
-- Politique de confidentialité complète
+### RGPD
+- Bandeau de consentement cookies (session)
+- Politique de confidentialité
 - Conditions générales de vente
-- Gestion sécurisée des sessions
+- Sessions sécurisées
 
 ## Technologies
 
-- **Frontend** : Next.js 15, React 19, TypeScript
-- **Styling** : Tailwind CSS
-- **Base de données** : SQLite avec Prisma ORM
-- **Authentification** : NextAuth.js
-- **État global** : Context API + localStorage
-- **Temps réel** : Server-Sent Events (SSE)
+- Frontend : Next.js 15, React 19, TypeScript
+- Style : Tailwind CSS
+- Base de données : SQLite (dev) avec Prisma ORM
+- Authentification : NextAuth.js (Credentials + JWT)
+- État global : Context API
+- Temps réel : Server‑Sent Events (SSE)
 
 ## Installation
 
-1. **Cloner le projet**
+1. Cloner le projet
 ```bash
 git clone <repository-url>
 cd shoe-store
 ```
 
-2. **Installer les dépendances**
+2. Installer les dépendances
 ```bash
 npm install
 ```
 
-3. **Configurer l'environnement**
+3. Configurer l’environnement
 ```bash
 cp .env.example .env
 # Éditer .env avec vos configurations
 ```
 
-4. **Initialiser la base de données**
+4. Initialiser la base de données
 ```bash
 npx prisma migrate dev
 npm run seed
 ```
 
-5. **Lancer le serveur de développement**
+5. Lancer le serveur de développement
 ```bash
 npm run dev
 ```
 
 ## Configuration
 
-### Variables d'environnement
+### Variables d’environnement
 ```env
 DATABASE_URL="file:./dev.db"
 NEXTAUTH_SECRET="your-secret-key"
@@ -85,14 +84,14 @@ NEXTAUTH_URL="http://localhost:3000"
 
 ### Connexion
 
-Accéder à la page de connexion: `http://localhost:3000/api/auth/signin` (provider "Credentials").
+Page de connexion: `http://localhost:3000/api/auth/signin` (Credentials).
 
 Comptes de test:
 - Admin: `admin@example.com` / `admin123`
 - Vendeur: `seller@example.com` / `seller123`
 - Client: `customer@example.com` / `customer123`
 
-Se déconnecter: `http://localhost:3000/api/auth/signout`
+Déconnexion: `http://localhost:3000/api/auth/signout`
 
 ### Liens rapides (dev)
 - Accueil: `http://localhost:3000/`
@@ -147,7 +146,7 @@ Se déconnecter: `http://localhost:3000/api/auth/signout`
 - Sessions sécurisées
 - Validation des données côté serveur
 
-## Responsive Design
+## Responsive
 
 - Mobile-first approach
 - Breakpoints Tailwind optimisés
@@ -162,7 +161,7 @@ npm run build
 npm start
 ```
 
-### Variables d'environnement production
+### Variables d’environnement (prod)
 - Configurer `DATABASE_URL` pour votre base de données
 - Générer un `NEXTAUTH_SECRET` sécurisé
 - Définir `NEXTAUTH_URL` avec votre domaine
@@ -209,8 +208,8 @@ Pour toute question ou problème :
 - Email : adam.ba@epitech.digital
 - Issues GitHub : [Créer une issue](https://github.com/Adam1701/AdamProject)
 
----
+—
 
-Développé avec passion par Adam BA
+Projet maintenu par Adam BA
 
 
